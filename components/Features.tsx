@@ -10,6 +10,7 @@ import { OrbitControls, Points, PointMaterial, Line } from '@react-three/drei'
 import * as random from 'maath/random'
 import { Suspense, useMemo, useRef } from 'react'
 import { Color, Vector3 } from 'three'
+import * as THREE from 'three';
 
 const features = [
   {
@@ -209,8 +210,9 @@ function Shape({ position, rotation, scale, color, speed, pulseSpeed }) {
 }
 
 function ConnectionLines({ shapes }) {
-  const lineRef = useRef<THREE.LineSegments>(null!);
-  const lineRef2 = useRef<THREE.LineSegments>(null!);
+  // Define a more specific type for the refs
+  const lineRef = useRef<any>(null);
+  const lineRef2 = useRef<any>(null);
 
   const points = useMemo(() => {
     const pts = [];
@@ -227,8 +229,15 @@ function ConnectionLines({ shapes }) {
     if (!lineRef.current || !lineRef2.current) return;
     
     const time = state.clock.getElapsedTime();
-    lineRef.current.material.dashOffset = time * 0.5;
-    lineRef2.current.material.dashOffset = -time * 0.3;
+    
+    // Use type assertion to handle the dashOffset property
+    if (lineRef.current.material && 'dashOffset' in lineRef.current.material) {
+      (lineRef.current.material as any).dashOffset = time * 0.5;
+    }
+    
+    if (lineRef2.current.material && 'dashOffset' in lineRef2.current.material) {
+      (lineRef2.current.material as any).dashOffset = -time * 0.3;
+    }
   });
 
   return (
