@@ -27,11 +27,9 @@ export default function Header() {
 
   return (
     <>
-      <div className="w-full fixed border-b top-0 left-0 right-0 z-50 bg-white rounded-b-[20px] shadow-md overflow-hidden">
-  
-
+      <div className="w-full fixed top-0 left-0 right-0 z-50 bg-transparent">
         {/* Main Header */}
-        <header className="w-full border-b border-gray-200">
+        <header className="w-full">
           <div className="container flex h-[80px] items-center justify-between px-6 max-w-[1400px] mx-auto">
             <Link href="/" className="flex items-center gap-2 py-4">
               <Image
@@ -47,43 +45,43 @@ export default function Header() {
             <nav className="hidden md:flex items-center gap-8">
               <Link 
                 href="/" 
-                className="flex items-center gap-1.5 text-[16px] font-medium hover:text-gray-600 rounded-md px-2 py-2"
+                className="flex items-center gap-1.5 text-[16px] font-medium text-[#31CDFF] hover:text-[#31CDFF] rounded-md px-2 py-2 transition-colors"
               >
                 Home
               </Link>
 
               <Link 
                 href="/careers" 
-                className="flex items-center gap-1.5 text-[16px] font-medium hover:text-gray-600 rounded-md px-2 py-2"
+                className="flex items-center gap-1.5 text-[16px] font-medium text-[#31CDFF] hover:text-[#31CDFF] rounded-md px-2 py-2 transition-colors"
               >
                 Careers
               </Link>
 
               <Link 
                 href="/services" 
-                className="flex items-center gap-1.5 text-[16px] font-medium hover:text-gray-600 rounded-md px-2 py-2"
+                className="flex items-center gap-1.5 text-[16px] font-medium text-[#31CDFF] hover:text-[#31CDFF] rounded-md px-2 py-2 transition-colors"
               >
                 Services
               </Link>
 
               <Link 
                 href="/about" 
-                className="flex items-center gap-1.5 text-[16px] font-medium hover:text-gray-600 rounded-md px-2 py-2"
+                className="flex items-center gap-1.5 text-[16px] font-medium text-[#31CDFF] hover:text-[#31CDFF] rounded-md px-2 py-2 transition-colors"
               >
                 About
               </Link>
               <Link 
-                href="/blogs" 
-                className="flex items-center gap-1.5 text-[16px] font-medium hover:text-gray-600 rounded-md px-2 py-2"
+                href="/blog" 
+                className="flex items-center gap-1.5 text-[16px] font-medium text-[#31CDFF] hover:text-[#31CDFF] rounded-md px-2 py-2 transition-colors"
               >
-                Blogs
+                Blog
               </Link>
             </nav>
 
             {/* Mobile Actions */}
             <div className="flex items-center gap-3">
               <Button 
-                className="bg-[#272055] hover:bg-[#31CDFF] rounded-[20px] text-[14px] font-medium px-5 h-[36px]"
+                className="bg-[#0066B3] hover:bg-[#31CDFF] text-white rounded-[20px] text-[14px] font-medium px-5 h-[36px] transition-colors"
                 onClick={() => router.push("/careers")}
               >
                 Join Our Team
@@ -96,7 +94,7 @@ export default function Header() {
               >
                 <Menu 
                   className={`w-6 h-6 transition-colors duration-200 ${
-                    isMobileMenuOpen ? 'text-[#31CDFF]' : 'text-[#272055]'
+                    isMobileMenuOpen ? 'text-[#31CDFF]' : 'text-[#0066B3]'
                   }`}
                 />
               </motion.button>
@@ -105,8 +103,8 @@ export default function Header() {
         </header>
       </div>
 
-      {/* Spacer for fixed header */}
-      <div className="h-[120px] w-full" />
+      {/* Remove or reduce spacer for fixed header */}
+      <div className="h-[80px] w-full" />
 
       <MobileMenu 
         isOpen={isMobileMenuOpen} 

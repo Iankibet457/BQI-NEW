@@ -22,6 +22,7 @@ const menuItems: MenuItem[] = [
   { title: "Careers", href: "/careers" },
   { title: "Services",href: "/services" },
   { title: "About", href: "/about" },
+  { title: "Blog", href: "/blog" }
 ]
 
 function MenuItem({ item, onClose }: { item: MenuItem; onClose: () => void }) {
@@ -31,7 +32,7 @@ function MenuItem({ item, onClose }: { item: MenuItem; onClose: () => void }) {
     return (
       <Link 
         href={item.href}
-        className="flex items-center py-3 px-4 border-b border-gray-200 text-[15px] font-medium hover:bg-gray-50"
+        className="flex items-center py-3 px-4 border-b border-white/20 text-[15px] font-medium text-[#31CDFF] hover:bg-white/20"
         onClick={onClose}
       >
         {item.title}
@@ -40,14 +41,14 @@ function MenuItem({ item, onClose }: { item: MenuItem; onClose: () => void }) {
   }
 
   return (
-    <div className="border-b border-gray-200">
+    <div className="border-b border-white/20">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-between w-full py-3 px-4 text-[15px] font-medium hover:bg-gray-50"
+        className="flex items-center justify-between w-full py-3 px-4 text-[15px] font-medium text-[#31CDFF] hover:bg-white/20"
       >
         {item.title}
         <ChevronDown
-          className={`w-4 h-4 transition-transform duration-200 ${
+          className={`w-4 h-4 transition-transform duration-200 text-[#31CDFF] ${
             isOpen ? "rotate-180" : ""
           }`}
         />
@@ -100,7 +101,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 bg-black/50 z-40"
+            className="fixed inset-0 bg-black/10 backdrop-blur-[2px] z-40"
             style={{ marginTop: '72px' }}
             onClick={onClose}
           />
@@ -114,7 +115,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               damping: 30,
               duration: 0.3
             }}
-            className="fixed top-[72px] left-0 right-0 bg-white z-50 overflow-hidden rounded-b-xl shadow-xl"
+            className="fixed top-[72px] left-0 right-0 bg-white/40 backdrop-blur-lg z-50 overflow-hidden rounded-b-xl shadow-lg"
           >
             <nav className="py-2 max-h-[calc(100vh-72px)] overflow-y-auto">
               {menuItems.map((item) => (
